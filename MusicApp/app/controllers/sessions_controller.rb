@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
     @user = User.new
     render :new
   end
+
   def create
     @user = user.find_by_credentials(
       params[:user][:email],
@@ -17,10 +18,6 @@ class SessionsController < ApplicationController
       flash.new[:errors] = ["Invalid password"]
       render :new
     end
-  end
-
-  def show
-
   end
 
   def destroy

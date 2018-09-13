@@ -9,26 +9,13 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <header>
-    <h1>MUSIC APP</h1>
-  </header>
-
-  <% if current_user.nil? %>
-  <a href="<%= new_session_url %>">Sign in</a>
-  <a href="<%= new_user_url %>">Sign up</a>
-<% else %>
-  <%= current_user.email %>
-  <form action="<%= session_url %>" method="post">
-    <input
-      type="hidden"
-      name="authenticity_token"
-      value="<%= form_authenticity_token %>">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Logout">
-  </form>
-<% end %>
-
   <body>
+    <div id='center'>
+    <header>
+      <h1>MUSIC APP</h1>
+    </header>
+
     <%= yield %>
+    </div>
   </body>
 </html>
