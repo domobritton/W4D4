@@ -1,14 +1,8 @@
-<% if type == :login %>
-  <% action_url = bands_url %>
-<% elsif type == :signup %>
-  <% action_url = bands_url %>
-<% end %>
-
 <% if current_user.nil? %>
-<a href="<%= new_session_url %>">Sign in</a>
-<a href="<%= new_user_url %>">Sign up</a>
+  <a href="<%= new_session_url %>">Sign In</a>
+  <a href="<%= new_user_url %>">Sign Up</a>
 <% else %>
-<%= current_user.email %>
+  <%= current_user.email %>
 <form action="<%= session_url %>" method="post">
   <input
     type="hidden"
@@ -19,7 +13,7 @@
 </form>
 <% end %>
 
-<form action="<%= action_url %>">
+<form action="<%= session_url %>" method="post">
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 <label for="email">Email</label>
 <input type="text" id="email" name="user[email]">

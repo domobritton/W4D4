@@ -7,21 +7,22 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = user.find_by_credentials(
+    @user = User.find_by_credentials(
       params[:user][:email],
       params[:user][:password]
     )
+
     if @user
       login!(@user)
       redirect_to bands_url(@user)
     else
-      flash.new[:errors] = ["Invalid password"]
+      flash.now[:errors] = ["Invalid password"]
       render :new
     end
   end
 
   def destroy
-    log_out!(@user)
+    log_out!
     redirect_to new_user_url
   end
 

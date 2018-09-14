@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    debugger
     @user = User.find(user_params)
     if @user.save
       login!(@user)
